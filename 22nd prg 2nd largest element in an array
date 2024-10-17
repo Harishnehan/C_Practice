@@ -1,0 +1,20 @@
+#include <stdio.h>
+#include <stdlib.h>
+int main() {
+    int n, first = -2147483648, second = -2147483648;
+    printf("Enter number of elements: "); scanf("%d", &n);
+    if (n < 2) { printf("Array must contain at least two elements.\n"); return 1; }
+    int *arr = malloc(n * sizeof(int));
+    if (arr == NULL) { printf("Memory allocation failed.\n"); return 1; }
+    printf("Enter the elements of the array:\n");
+    for (int i = 0; i < n; i++) scanf("%d", &arr[i]);
+    for (int i = 0; i < n; i++) {
+        if (arr[i] > first) { second = first; first = arr[i]; }
+        else if (arr[i] > second && arr[i] < first) second = arr[i];
+    }
+    if (second == -2147483648) printf("No second largest element.\n");
+    else printf("The second largest element is: %d\n", second);
+    free(arr);
+    return 0;
+}
+
