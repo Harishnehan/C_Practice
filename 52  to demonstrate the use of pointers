@@ -1,0 +1,22 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    int num = 10;
+    int *ptr;
+    ptr = &num;
+    printf("Value of num: %d\n", num);
+    printf("Address of num: %p\n", (void*)&num);
+    printf("Value of num via pointer: %d\n", *ptr);
+    *ptr = 20;
+    printf("Value of num after modification via pointer: %d\n", num);
+    int *dynamicPtr = (int *)malloc(sizeof(int));
+    if (dynamicPtr == NULL) {
+        printf("Memory allocation failed!\n");
+        return 1;
+    }
+    *dynamicPtr = 50;
+    printf("Value stored in dynamically allocated memory: %d\n", *dynamicPtr);
+    free(dynamicPtr);
+    return 0;
+}
